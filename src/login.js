@@ -27,23 +27,23 @@ function Login() {
                                let token=logindata.data.token;
 
                               
-                            //    try {
-                            //     let commondata = await Getlongurlsecure({
-                            //         headers: {
-                            //             authorization: window.localStorage.getItem("app_token")
-                            //         }
-                            //     });
-                            //     setData(commondata.data.message);
-                            // } catch (error) {
-                            //     setData("Not logged In");
-                            // }
-                            // if(token)
-                            // {
-                            //     history.push(`/head`);
-                            // }
-                            // else{
-                            //     history.push(`/login`);
-                            // }
+                               try {
+                                let commondata = await Getlongurlsecure({
+                                    headers: {
+                                        authorization: window.localStorage.getItem("app_token")
+                                    }
+                                });
+                                setData(commondata.data.message);
+                            } catch (error) {
+                                setData("Not logged In");
+                            }
+                            if(token)
+                            {
+                                history.push(`/head`);
+                            }
+                            else{
+                                history.push(`/login`);
+                            }
                                 setEmail("");
                                 setPassword("");
                             }}>
