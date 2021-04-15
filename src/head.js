@@ -20,7 +20,8 @@ function Head(){
           <form onSubmit={async (e) => {
             e.preventDefault();
             handleClick();
-            await Postlongurl(userData);
+            console.log(userData);
+             Postlongurl(userData);
             setLongurl("");
            
           }}>
@@ -28,6 +29,7 @@ function Head(){
               <div class="col-lg-10">
                 <input type="text" name="longurl" class="form-control" placeholder="Paste Your Long URL" value={longurl} onChange={(e) => {
                   setLongurl(e.target.value);
+
                 }} />
               </div>
               <div className="col-lg-2">
