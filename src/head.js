@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Postlongurl } from "./api";
 
-function Head(){
+function Head(props){
+
+  console.log(props.match.params.id)
 
     let [longurl, setLongurl] = useState("");
 
-    let userData ={longurl}
+    let userData ={longurl,email:props.match.params.id}
 
     let history = useHistory();
+
     function handleClick() {
-        history.push("/card");
+        history.push(`/card/${props.match.params.id}`);
       }
     return (
         <>
@@ -21,7 +24,7 @@ function Head(){
             e.preventDefault();
             handleClick();
             console.log(userData);
-             Postlongurl(userData);
+          await  Postlongurl(userData);
             setLongurl("");
            
           }}>

@@ -5,7 +5,7 @@ function Login() {
 
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
-    let [data,setData]=useState("");
+
     let history=useHistory();
     let userData = { email, password }
 
@@ -27,19 +27,19 @@ function Login() {
                                let token=logindata.data.token;
 
                               
-                               try {
-                                let commondata = await Getlongurlsecure({
-                                    headers: {
-                                        authorization: window.localStorage.getItem("app_token")
-                                    }
-                                });
-                                setData(commondata.data.message);
-                            } catch (error) {
-                                setData("Not logged In");
-                            }
+                            //    try {
+                            //     let commondata = await Getlongurlsecure({
+                            //         headers: {
+                            //             authorization: window.localStorage.getItem("app_token")
+                            //         }
+                            //     });
+                            //     setData(commondata.data.message);
+                            // } catch (error) {
+                            //     setData("Not logged In");
+                            // }
                             if(token)
                             {
-                                history.push(`/head`);
+                                history.push(`/head/${email}`);
                             }
                             else{
                                 history.push(`/login`);
@@ -76,7 +76,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-            <button onClick={async () => {
+            {/* <button onClick={async () => {
                 try {
                     let commondata = await getCommonData({
                         headers: {
@@ -88,7 +88,7 @@ function Login() {
                     setData("Not logged In");
                 }
             }}>Fetch</button>
-            {data}
+            {data} */}
         </>
     )
 }

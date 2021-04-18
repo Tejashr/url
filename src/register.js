@@ -8,6 +8,8 @@ function Register(){
     let [password, setPassword] = useState("");
     let [phone,setPhone]=useState("");
 
+    let history=useHistory();
+
     let userData = { username,email, password ,phone}
 
     return(
@@ -26,6 +28,7 @@ function Register(){
                                 setPassword("");
                                 setUsername("");
                                 setPhone("");
+                                history.push(`/login`);
                             }}>
                             <div class="input-group form-group">
                                     <div class="input-group-prepend">

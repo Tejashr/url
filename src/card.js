@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Getlongurl } from './api';
+import { Getlongurl, GetlongurlbyEmail } from './api';
 
-function Card() {
+function Card(props) {
 
     let [userData, setuserData] = useState([])
     async function getdata(){
-        let users = await Getlongurl();
+        let users = await GetlongurlbyEmail(props.match.params.id);
         setuserData(users.data)
     }
 
@@ -25,9 +25,8 @@ function Card() {
                                 <div class="card extra">
                                     <h5 class="card-header bg-secondary text-light">URL Shrink</h5>
                                     <div class="card-body">
-                                        <a class="card-title" href={`http://localhost:5000/${user.shorturl}`} target="_blank">http://localhost:5000/{user.shorturl}</a>
+                                        <a class="card-title" href={`https://urltejas.herokuapp.com/${user.shorturl}`} target="_blank">https://urltejas.herokuapp.com/{user.shorturl}</a>
                                         <p class="card-text text-light">{user.longurl}</p>
-                                        <a href="/head" class="btn btn-outline-warning">home page</a>
                                     </div>
                                 </div>
                             </div>

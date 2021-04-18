@@ -1,29 +1,33 @@
 import axios from "axios";
 
 export function Postlongurl(data){
-    return axios.post(`http://localhost:5000/urlshort`,data)
+    return axios.post(`https://urltejas.herokuapp.com/urlshort`,data)
 }
 
 export function Getlongurl(){
-    return axios.get(`http://localhost:5000/urlshort`)
+    return axios.get(`https://urltejas.herokuapp.com/urlshort`)
+}
+
+export function GetlongurlbyEmail(email){
+    return axios.get(`https://urltejas.herokuapp.com/userurl/${email}`)
 }
 
 export function Getlongurlsecure(data){
-    return axios.get(`http://localhost:5000/urlshort`,data)
+    return axios.get(`https://urltejas.herokuapp.com/urlshort`,data)
 }
 
 export function Getlongurlbyid(id){
-    return axios.get(`http://localhost:5000/${id}`)
+    return axios.get(`https://urltejas.herokuapp.com/${id}`)
 }
 
 export function Postlogin(data){
-    return axios.post(`http://localhost:5000/login`,data)
+    return axios.post(`https://urltejas.herokuapp.com/login`,data)
 }
 
 export function Postregister(data){
-    return axios.post(`http://localhost:5000/register`,data)
+    return axios.post(`https://urltejas.herokuapp.com/register`,data)
 }
 
 export function getCommonData(data){
-    return axios.get(`http://localhost:5000/common`,data)
+    return axios.get(`https://urltejas.herokuapp.com/common`,data)
 }
