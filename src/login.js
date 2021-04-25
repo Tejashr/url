@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Postlogin,getCommonData, Getlongurlsecure } from "./api";
+import { Postlogin, getCommonData, Getlongurlsecure, Postlongurl } from "./api";
+import UserContext from './usercontext';
 function Login() {
 
+    // let {isAuth,setisAuth} = useContext(UserContext)
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
+    let [data,setData]=useState("");
 
-    let history=useHistory();
+    let history = useHistory();
     let userData = { email, password }
 
     return (
@@ -20,30 +23,23 @@ function Login() {
                         <div class="card-body">
                             <form onSubmit={async (e) => {
                                 e.preventDefault();
-                               let logindata= await Postlogin(userData);
-                               console.log(logindata);
-                               window.localStorage.setItem("app_token",logindata.data.token)
-                               console.log(window.localStorage.app_token)
-                               let token=logindata.data.token;
+                               try{
 
-                              
-                            //    try {
-                            //     let commondata = await Getlongurlsecure({
-                            //         headers: {
-                            //             authorization: window.localStorage.getItem("app_token")
-                            //         }
-                            //     });
-                            //     setData(commondata.data.message);
-                            // } catch (error) {
-                            //     setData("Not logged In");
-                            // }
-                            if(token)
-                            {
-                                history.push(`/head/${email}`);
-                            }
-                            else{
-                                history.push(`/login`);
-                            }
+                                let logindata = await Postlogin(userData);
+                                window.localStorage.setItem("app_token", logindata.data.token)
+                                console.log(window.localStorage.app_token)
+                                let token = logindata.data.token;
+                                if (token) {
+                                    // setisAuth(true)
+                                    history.push(`/head/${email}`);
+                                }
+                                else {
+                                    history.push(`/login`);
+                                }
+                               }
+                               catch(error){
+                                console.log(error)
+                               }
                                 setEmail("");
                                 setPassword("");
                             }}>
@@ -76,19 +72,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-            {/* <button onClick={async () => {
-                try {
-                    let commondata = await getCommonData({
-                        headers: {
-                            authorization: window.localStorage.getItem("app_token")
-                        }
-                    });
-                    setData(commondata.data.message);
-                } catch (error) {
-                    setData("Not logged In");
-                }
-            }}>Fetch</button>
-            {data} */}
+         
         </>
     )
 }

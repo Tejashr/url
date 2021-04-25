@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Getlongurl, GetlongurlbyEmail } from './api';
+import { withRouter } from "react-router-dom";
 
 function Card(props) {
 
     let [userData, setuserData] = useState([])
-    async function getdata(){
-        let users = await GetlongurlbyEmail(props.match.params.id);
-        setuserData(users.data)
-    }
+   
 
     useEffect( () => {
+        async function getdata(){
+            let users = await GetlongurlbyEmail(props.match.params.id);
+            setuserData(users.data)
+        }
         getdata();
-    }, [userData.length])
+    }, [props.match.params.id])
    
 
     return (
@@ -38,4 +40,4 @@ function Card(props) {
     )
 }
 
-export default Card;
+export default withRouter(Card);

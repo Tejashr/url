@@ -12,19 +12,25 @@ import {
 import Nav from './nav';
 import Login from './login';
 import Register from './register';
-
+import ProtectedRoute from "./protectedroute";
 function App() {
+
   return (
     <>
       <Router>
         <Nav></Nav>
         <div className="container">
+        
           <Switch>
             <Route path="/login" component={Login} exact />
             <Route path="/register" component={Register} exact />
-            <Route path="/head/:id" component={Head} exact />
-            <Route path="/card/:id" component={Card} exact />
+            <ProtectedRoute path="/head/:id" component={Head} exact />
+            <ProtectedRoute
+              path="/card/:id"
+              component={Card}
+            />
           </Switch>
+          
         </div>
       </Router>
     </>

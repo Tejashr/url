@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import UserContext from "./usercontext";
 
 function Nav() {
+
+    // let {setisAuth} = useContext(UserContext)
 
     let history=useHistory();
 
@@ -19,7 +22,8 @@ function Nav() {
                         <Link class="nav-item nav-link text-light" to="/register">Register</Link>
                         <Link class="nav-item nav-link text-light" to="/login" onClick={()=>{
                              window.localStorage.removeItem("app_token");
-                             history.push(`/adminlogin`);
+                            //  setisAuth(false)
+                             history.push(`/login`);
                         }}>Logout</Link>
                     </div>
                 </div>

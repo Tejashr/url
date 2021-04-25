@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Postlongurl } from "./api";
+import { withRouter } from "react-router-dom";
 
 function Head(props){
 
@@ -44,4 +45,4 @@ function Head(props){
     )
 }
 
-export default Head;
+export default withRouter(Head);
