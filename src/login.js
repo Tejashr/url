@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Postlogin, getCommonData, Getlongurlsecure, Postlongurl } from "./api";
-import UserContext from './usercontext';
+import { Postlogin } from "./api";
+
 function Login() {
 
-    // let {isAuth,setisAuth} = useContext(UserContext)
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [data,setData]=useState("");
@@ -30,7 +29,6 @@ function Login() {
                                 console.log(window.localStorage.app_token)
                                 let token = logindata.data.token;
                                 if (token) {
-                                    // setisAuth(true)
                                     history.push(`/head/${email}`);
                                 }
                                 else {

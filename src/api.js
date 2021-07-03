@@ -25,11 +25,7 @@ export function Getlongurlsecure(data){
 }
 
 export function Getlongurlbyid(id){
-    return axios.get(`https://urltejas.herokuapp.com/${id}`, {
-        headers: {
-            authorization: window.localStorage.getItem("app_token")
-        }
-    })
+    return axios.get(`https://urltejas.herokuapp.com/${id}`)
 }
 
 export function Postlogin(data){

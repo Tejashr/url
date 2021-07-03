@@ -13,7 +13,7 @@ function Card(props) {
             setuserData(users.data)
         }
         getdata();
-    }, [props.match.params.id])
+    }, [])
    
 
     return (

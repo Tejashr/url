@@ -20,17 +20,12 @@ function App() {
       <Router>
         <Nav></Nav>
         <div className="container">
-        
           <Switch>
             <Route path="/login" component={Login} exact />
             <Route path="/register" component={Register} exact />
             <ProtectedRoute path="/head/:id" component={Head} exact />
-            <ProtectedRoute
-              path="/card/:id"
-              component={Card}
-            />
+            <ProtectedRoute path="/card/:id"component={Card} exact/>
           </Switch>
-          
         </div>
       </Router>
     </>
